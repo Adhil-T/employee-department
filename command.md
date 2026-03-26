@@ -11,12 +11,16 @@ Learn basic SQL operations including:
 
 ## SQL Script
 
-```sql
 -- Step 1: Create and Select Database
+
+```sql
 CREATE DATABASE employee_department;
 USE employee_department;
+```
 
 -- Step 2: Create Tables
+
+```sql
 CREATE TABLE department(
     dept_id INT PRIMARY KEY,
     dept_name VARCHAR(20)
@@ -29,8 +33,11 @@ CREATE TABLE employee(
     dept_id INT,
     FOREIGN KEY(dept_id) REFERENCES department(dept_id)
 );
+```
 
 -- Step 3: Insert Data
+
+```sql
 INSERT INTO department VALUES
 (1001, "Computer Science"),
 (1002, "Maths"),
@@ -51,39 +58,42 @@ INSERT INTO employee VALUES
 (108, "Eva", 68000, 1005);
 
 SELECT * FROM employee;
+```
 
 -- Queries & Questions
 
 -- Q1: Employees with Salary >= 60000
-SELECT emp_name, salary 
-FROM employee 
-WHERE salary >= 60000;
+
+```sql
+SELECT emp_name, salary FROM employee WHERE salary >= 60000;
+```
 
 -- Q2: Employee Names with Department Names
-SELECT e.emp_name, d.dept_name 
-FROM employee e 
-JOIN department d 
-ON e.dept_id = d.dept_id;
+
+```sql
+SELECT e.emp_name, d.dept_name FROM employee e JOIN department d ON e.dept_id = d.dept_id;
+```
 
 -- Q3: Employee(s) with Highest Salary
-SELECT * FROM employee 
-WHERE salary = (SELECT MAX(salary) FROM employee);
+
+```sql
+SELECT * FROM employee WHERE salary = (SELECT MAX(salary) FROM employee);
+```
 
 -- Q4: Number of Employees in Each Department
-SELECT d.dept_name, COUNT(e.dept_id) 
-FROM department d 
-JOIN employee e 
-ON d.dept_id = e.dept_id 
-GROUP BY d.dept_name;
+
+```sql
+SELECT d.dept_name, COUNT(e.dept_id) FROM department d JOIN employee e ON d.dept_id = e.dept_id GROUP BY d.dept_name;
+```
 
 -- Q5: Employees with Salary Above Average
-SELECT * FROM employee 
-WHERE salary >= (SELECT AVG(salary) FROM employee);
+
+```sql
+SELECT * FROM employee WHERE salary >= (SELECT AVG(salary) FROM employee);
+```
 
 -- Q6: Departments with More Than 2 Employees
-SELECT d.dept_name 
-FROM department d 
-JOIN employee e 
-ON d.dept_id = e.dept_id 
-GROUP BY d.dept_name 
-HAVING COUNT(e.dept_id) > 2;
+
+```sql
+SELECT d.dept_name FROM department d JOIN employee e ON d.dept_id = e.dept_id GROUP BY d.dept_name HAVING COUNT(e.dept_id) > 2;
+```
