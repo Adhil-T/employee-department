@@ -45,8 +45,6 @@ INSERT INTO department VALUES
 (1004, "Chemistry"),
 (1005, "Zoology");
 
-SELECT * FROM department;
-
 INSERT INTO employee VALUES
 (101, "Alan", 65000, 1002),
 (102, "Smith", 45000, 1005),
@@ -56,8 +54,6 @@ INSERT INTO employee VALUES
 (106, "Andrew", 61000, 1002),
 (107, "Salman", 58000, 1003),
 (108, "Eva", 68000, 1005);
-
-SELECT * FROM employee;
 ```
 
 -- Queries & Questions
